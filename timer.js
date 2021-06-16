@@ -14,13 +14,14 @@ class Timer {
 
     }
 
-    start = () => {
+    start = (totalDuration) => {
         if( this.onStart ){
-            this.onStart();
+            this.onStart(this.timeRemaining);
         }
         this.tick();
-        this.interval = setInterval(this.tick, 1000);
+        this.interval = setInterval(this.tick, 20);
         // by assigning the variable to this.timer, we can refer to this variable in other functions
+        // running tick() every 50ms so animation runs smoother
         this.startDeactivate();
     }
 
@@ -37,9 +38,10 @@ class Timer {
                 this.onComplete();
             }
          } else {
-            this.timeRemaining = timeRemaining - 1;
+            this.timeRemaining = timeRemaining - .02;
+            // subtracting .05 to match up with the 50ms count of running tick above in line 22
             if( this.onTick ){
-                this.onTick();
+                this.onTick(this.timeRemaining);
             }
         }
     }
@@ -59,6 +61,6 @@ class Timer {
     }
 
     set timeRemaining(time){
-       this.durationInput.value = time
+       this.durationInput.value = time.toFixed(2)
     }
 }
