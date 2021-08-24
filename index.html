@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
-    <body>
-        <svg height="400" width="400">
-            <circle 
-                r="190" 
-                cx="200" 
-                cy="200"
-                fill="transparent"
-                stroke="purple"
-                stroke-width="15"
-                transform="rotate(-90 200 200)"
-            />
-        </svg>
-        <!-- stroke-dasharray takes in optional 2 values, first is the length of 
-        the dash & second is the spacing between dashes. the border starts at ~ 3 o'clock 
-        use the stroke-dashoffset to adjust where the border begins, use a - num to move it clockwise -->
-        <!-- for all svg elements we must assign a heigth & width -->
-        <!-- transform and rotate takes in 3 values, the first for degree of rotation, and the direction we want to transform -->
-        <!-- we always work from the origin on the element, which is the 
-            top left corner where the X-axis meets the y-axis -->
-        <input type="text" id="duration" />
-        <button id="start">Start</button>
-        <button id="pause">Pause</button>
-        <script src='timer.js'></script>
-        <script src='index.js'></script>
-    </body>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="timer">
+      <div class="controls">
+        <input id="duration" value="10" />
+        <div>
+          <button id="start"><i class="fas fa-play"></i></button>
+          <button id="pause"><i class="fas fa-pause"></i></button>
+        </div>
+      </div>
+      <svg class="dial">
+        <circle
+          fill="transparent"
+          stroke="orange"
+          stroke-width="15"
+          r="62"
+          cx="120"
+          cy="120"
+          transform="rotate(-90 100 100)"
+        />
+      </svg>
+    </div>
+
+    <script src="timer.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>
